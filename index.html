@@ -3,94 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>放置・クリッカーゲームサーバー</title>
+  <title>Idle Game Community</title>
+
+  <!-- OGP / Favicon（ロゴは簡易SVGを使用） -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%235865F2%22/><text x=%2250%22 y=%2258%22 font-size=%2250%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Arial%22>IG</text></svg>">
+
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background: radial-gradient(circle at top, #1e293b, #020617);
       color: white;
-      text-align: center;
     }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 40px 20px;
+
+    /* ===== ナビゲーション（タブ） ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(2,6,23,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      z-index: 10;
     }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
     }
-    p {
-      line-height: 1.8;
-      margin: 10px 0;
-    }
-    .box {
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 12px;
-      margin: 20px 0;
-    }
-    .button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
       background: #5865F2;
-      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .tabs a {
+      margin-left: 20px;
       text-decoration: none;
+      color: white;
+      opacity: 0.8;
+      transition: 0.2s;
+    }
+
+    .tabs a:hover {
+      opacity: 1;
+      color: #5865F2;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+
+    h1 { font-size: 36px; margin-bottom: 15px; }
+    .subtitle { opacity: 0.7; }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 25px;
+      margin: 20px 0;
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #5865F2;
+    }
+
+    .join-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 30px;
+      background: linear-gradient(135deg, #5865F2, #4752c4);
       border-radius: 10px;
+      text-decoration: none;
+      color: white;
       font-size: 18px;
       transition: 0.2s;
     }
-    .button:hover {
-      background: #4752c4;
+
+    .join-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #5865F2;
     }
+
+    .counter {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #a5b4fc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.5;
+    }
+
   </style>
 </head>
 <body>
-  <div class="container">
 
+  <!-- ナビバー -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">IG</div>
+      Idle Community
+    </div>
+    <div class="tabs">
+      <a href="#about">概要</a>
+      <a href="#features">特徴</a>
+      <a href="#join">参加</a>
+    </div>
+  </nav>
+
+  <!-- ヘッダー -->
+  <header>
     <h1>💰 放置・クリッカーゲーム好きな人、ちょっと見て！！！</h1>
+    <p class="subtitle">本気で作ってるコミュニティ</p>
+    <div class="counter" id="memberCount">メンバー数: 読み込み中...</div>
+  </header>
 
-    <p>
+  <!-- 概要 -->
+  <section id="about">
+    <div class="card">
       ただの雑談サーバーじゃなくて、<br>
       「ちゃんと人が集まって、ちゃんと楽しめる場所」を本気で作ってます。
-    </p>
+    </div>
 
-    <p>
+    <div class="card">
       放置ゲーって1人でもできるけど、<br>
       ・効率のいい進め方を共有したり<br>
       ・「ここまでいった！」って見せ合ったり<br>
-      ・おすすめを教え合ったり<br>
-      <br>
+      ・おすすめを教え合ったり<br><br>
       誰かとやるだけで、楽しさが一気に変わる。
-    </p>
+    </div>
+  </section>
 
-    <div class="box">
-      <p>✔ 攻略・効率の情報交換OK</p>
-      <p>✔ 進捗や記録の共有歓迎</p>
-      <p>✔ 雑談OK（落ち着いた雰囲気）</p>
-      <p>✔ 聞き専OK</p>
+  <!-- 特徴 -->
+  <section id="features">
+    <div class="card">
+      ✔ 攻略・効率の情報交換OK<br>
+      ✔ 進捗や記録の共有歓迎<br>
+      ✔ 雑談OK（落ち着いた雰囲気）<br>
+      ✔ 聞き専OK
     </div>
 
-    <p>
+    <div class="card">
       初心者でも大丈夫。<br>
       ガチ勢もちゃんと満足できる環境を目指してます。
-    </p>
+    </div>
 
-    <p>
-      まだ人数は多くないけど、<br>
-      今なら“初期メンバー”として空気を作る側になれます。<br>
-      変なノリもなく、入りやすい状態です。
-    </p>
+    <div class="card">
+      今なら“初期メンバー”として空気を作る側になれます。
+    </div>
+  </section>
 
-    <p>
-      「ちょっと気になる」くらいでOK。<br>
-      気軽に入ってみてください。
-    </p>
+  <!-- 参加 -->
+  <section id="join">
+    <div class="card" style="text-align:center;">
+      気軽に参加してください！<br>
+      <a class="join-btn" href="https://discord.gg/TuW4KtsBvv" target="_blank">参加する</a>
+    </div>
+  </section>
 
-    <a class="button" href="https://discord.gg/あなたの招待リンク">サーバーに参加する</a>
+  <footer>
+    © 2026 Idle Game Community
+  </footer>
 
-  </div>
+  <!-- Discord人数取得 -->
+  <script>
+    const invite = "TuW4KtsBvv";
+    fetch(`https://discord.com/api/v9/invites/${invite}?with_counts=true`)
+      .then(res => res.json())
+      .then(data => {
+        const count = data.approximate_member_count;
+        document.getElementById("memberCount").innerText = `メンバー数: ${count}人`;
+      })
+      .catch(() => {
+        document.getElementById("memberCount").innerText = "メンバー数: 取得できません";
+      });
+  </script>
+
 </body>
 </html>
